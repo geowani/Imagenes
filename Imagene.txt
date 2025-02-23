@@ -27,7 +27,6 @@ def es_naranja(imagen):
     return 'orange' in tensorflow.keras.applications.mobilenet_v2.decode_predictions(pred)[0][0][1].lower()
 
 def analizar_imagen(imagen_path):
-    # Analizar una sola imagen
     imagen = cv2.imread(imagen_path)
     if imagen is not None:
         if es_naranja(imagen):
@@ -37,11 +36,9 @@ def analizar_imagen(imagen_path):
     return None
 
 def analizar_imagenes(carpeta):
-    # Crear carpetas para las imágenes
     carpeta_naranjas = os.path.join(carpeta, "naranjas")
     carpeta_no_naranjas = os.path.join(carpeta, "no_naranjas")
     
-    # Crear carpetas si no existen
     if not os.path.exists(carpeta_naranjas):
         os.makedirs(carpeta_naranjas)
     if not os.path.exists(carpeta_no_naranjas):
@@ -52,7 +49,6 @@ def analizar_imagenes(carpeta):
     naranjas = 0
     no_naranjas = 0
     
-    # Analizar cada imagen en la carpeta
     for archivo in os.listdir(carpeta):
         if archivo.endswith(('png', 'jpg', 'jpeg')):
             imagen_path = os.path.join(carpeta, archivo)
@@ -76,18 +72,16 @@ class Aplicacion(tk.Tk):
         self.title("UMG TAREA 3")
         self.resizable(True, True) 
         
-        # Usar rutas relativas para icono e imagen
         icono_path = "assets/Logo.ico"  # Ruta relativa para el icono
         self.iconbitmap(icono_path)
         
         self.carpetas_analizadas = None
-        self.imagen_path = None  # Aseguramos que la variable imagen_path esté definida
+        self.imagen_path = None 
         
         self.titulo = tk.Label(self, text="DETECTOR DE NARANJAS", font=("Arial", 16, "bold"))
         self.titulo.pack(pady=10)
         
-        # Usar rutas relativas para la imagen
-        imagen_path = "assets/Umg.png"  # Ruta relativa para la imagen
+        imagen_path = "assets/Umg.png" 
         imagen = Image.open(imagen_path) 
         imagen = imagen.resize((100, 100))
         self.imagen_tk = ImageTk.PhotoImage(imagen)
@@ -121,7 +115,7 @@ class Aplicacion(tk.Tk):
     
     def seleccionar_imagen(self):
         self.imagen_path = filedialog.askopenfilename(filetypes=[("Archivos de imagen", "*.png;*.jpg;*.jpeg")])
-        self.carpetas_analizadas = None  # Limpiar la carpeta seleccionada
+        self.carpetas_analizadas = None 
     
     def iniciar_analisis(self):
         if not self.carpetas_analizadas and not self.imagen_path:
