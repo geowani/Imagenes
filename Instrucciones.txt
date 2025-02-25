@@ -1,0 +1,13 @@
+git clone https://github.com/geowani/Imagenes
+
+pip install opencv-python
+
+pip install tensorflow
+
+pip install Pillow
+
+cd Imagenes
+
+py Imagene.py
+
+
