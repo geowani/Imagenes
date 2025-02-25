@@ -1,13 +1,11 @@
-git clone https://github.com/geowani/Imagenes
-
 pip install opencv-python
 
-pip install tensorflow
+pip install tensorflow - Compatible con python 3.9.0 a 3.11.4
 
 pip install Pillow
+
+git clone https://github.com/geowani/Imagenes
 
 cd Imagenes
 
 py Imagene.py
-
-
